@@ -16,7 +16,7 @@ void log_msg(const std::string& msg, const std::source_location location = std::
     std::cout << "Stacktrace:\n" << stacktrace << std::endl;
 }
 #else
-void log_msg(const std::string& msg, const std::source_location location& = std::source_location::current())
+void log_msg(const std::string& msg, const std::source_location location = std::source_location::current())
 {
     std::cout << "Message with source loc: " << msg << " File: " << location.file_name() << " Line: " << location.line() << std::endl;
     std::cout << "Function: " << location.function_name() << std::endl;
