@@ -9,14 +9,14 @@
 
 #if defined(__cpp_lib_stacktrace)
 #include <stacktrace>
-void log_msg(const std::string& msg, const std::source_location location = std::source_location::current(), const std::stacktrace stacktrace = std::stacktrace::current())
+void log_msg(const std::string& msg, const std::source_location& location = std::source_location::current(), const std::stacktrace& stacktrace = std::stacktrace::current())
 {
     std::cout << "Message with source loc and stacktrace: " << msg << " File: " << location.file_name() << " Line: " << location.line() << std::endl;
     std::cout << "Function: " << location.function_name() << std::endl;
     std::cout << "Stacktrace:\n" << stacktrace << std::endl;
 }
 #else
-void log_msg(const std::string& msg, const std::source_location location = std::source_location::current())
+void log_msg(const std::string& msg, const std::source_location& location = std::source_location::current())
 {
     std::cout << "Message with source loc: " << msg << " File: " << location.file_name() << " Line: " << location.line() << std::endl;
     std::cout << "Function: " << location.function_name() << std::endl;
