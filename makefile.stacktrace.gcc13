@@ -1,6 +1,6 @@
 CXX=g++
 CXXVER=c++23
-#LIBLINK=-lstdc++_libbacktrace
+LIBLINK=-lstdc++_libbacktrace
 
 
 CLANGVERGCC=
@@ -17,7 +17,7 @@ main : main.cpp
 	$(CXX) -std=$(CXXVER) main.cpp $(LIBLINK) -o main
 
 main_clang : main.cpp
-	clang++ -std=$(CXXVER) $(CLANGVERGCC) main.cpp $(LIBLINK) -o main_clang
+	clang++ -fsized-deallocation -std=$(CXXVER) $(CLANGVERGCC) main.cpp $(LIBLINK) -o main_clang
 
 clean:
 	rm -f *.o ./main ./main_clang
