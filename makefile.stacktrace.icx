@@ -1,0 +1,21 @@
+CXX=icpx
+CXXVER=c++23
+# Attetnion: a la fin de la ligne de commande ???
+LIBLINK=-lstdc++exp
+
+CLANGVERGCC=
+MACHINE_ID=$(shell /usr/bin/cat /etc/machine-id)
+ifeq ($(MACHINE_ID), 0e77c5947a5b461286b81059bba0e7e5)
+ CLANGVERGCC=--gcc-install-dir=/usr/lib/gcc/aarch64-linux-gnu/13
+endif
+
+
+
+all: main_icx
+
+main_icx : main.cpp
+	 $(CXX) -std=$(CXXVER) main.cpp $(LIBLINK) -o main_icx
+
+clean:
+	rm -f *.o ./main_icx
+

@@ -19,5 +19,5 @@ main_clang : main.cpp
 	clang++ -std=$(CXXVER) $(CLANGVERGCC) main.cpp -o main_clang
 
 clean:
-	rm -f *.o ./main ./main_clang
+	rm -f *.o ./main ./main_clang ./main_icx
 

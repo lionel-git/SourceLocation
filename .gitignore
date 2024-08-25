@@ -400,3 +400,4 @@ FodyWeavers.xsd
 # my ignore
 main
 main_clang
+main_icx
