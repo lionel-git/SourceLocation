@@ -14,12 +14,14 @@ void log_msg(const std::string& msg, const std::source_location& location = std:
     std::cout << "Message with source loc and stacktrace: " << msg << " File: " << location.file_name() << " Line: " << location.line() << std::endl;
     std::cout << "Function: " << location.function_name() << std::endl;
     std::cout << "Stacktrace:\n" << stacktrace << std::endl;
+    std::cout << std::endl;
 }
 #else
 void log_msg(const std::string& msg, const std::source_location& location = std::source_location::current())
 {
     std::cout << "Message with source loc: " << msg << " File: " << location.file_name() << " Line: " << location.line() << std::endl;
     std::cout << "Function: " << location.function_name() << std::endl;
+    std::cout << std::endl;
 }
 #endif
 #else
@@ -27,12 +29,24 @@ void log_msg(const std::string& msg, const std::source_location& location = std:
 void log_msg(const std::string& msg, const std::string& fileName, int line)
 {
     std::cout << "Message without source loc: " << msg << " File: " << fileName << " Line: " << line << std::endl;
+    std::cout << std::endl;
 }
 #endif
 
+struct MyClass
+{
+    int doSomething(char *data)
+    {
+        log_msg("BlahBlah2" SOURCE_LOCATION);
+        return 0;
+    }
+};
+
 int myFunction()
 {
-    log_msg("MyMessage" SOURCE_LOCATION);
+    MyClass c;
+    c.doSomething(nullptr);
+    log_msg("BlahBlah" SOURCE_LOCATION);
     return 0;
 }
 
